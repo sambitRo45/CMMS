@@ -102,6 +102,7 @@ const SidebarMenuItem: FC<SidebarMenuItemProps> = ({
       <Button
         disableRipple
         component={RouterLink}
+        className={clsx({ active })}
         onClick={closeSidebar}
         to={link}
         startIcon={Icon && <Icon />}

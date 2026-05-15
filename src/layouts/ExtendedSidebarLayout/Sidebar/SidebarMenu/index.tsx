@@ -192,7 +192,7 @@ const reduceChildRoutes = ({
     ? !!matchPath(
         {
           path: item.link,
-          end: true
+          end: !item.matchPrefix
         },
         path
       )

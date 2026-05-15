@@ -55,8 +55,8 @@ interface OwnProps {
 function Logo({ white }: OwnProps) {
   const { t, i18n } = useTranslation();
   const theme = useTheme();
-  const width = 60;
-  const height = 60;
+  const width = 75;
+  const height = 75;
   const mobile = useMediaQuery(theme.breakpoints.down('sm'));
   const { logo, name: brandName } = useBrand();
 

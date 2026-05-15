@@ -78,7 +78,7 @@ function Sidebar() {
                       window.open('https://www.intel-loop.com/', '_blank');
                     }}
                   >
-                    Powered by Intelloop
+                    {/* Powered by Intelloop */}
                   </Typography>
                 )}
               </Box>

@@ -138,11 +138,15 @@ const CreatePurchaseOrders = Loader(
 );
 const Locations = Loader(lazy(() => import('../content/own/Locations')));
 const WorkOrders = Loader(lazy(() => import('../content/own/WorkOrders')));
-const ProductsManufacture = Loader(
-  lazy(() => import('../content/own/Products/Manufacture'))
+const CMMSHome = Loader(lazy(() => import('../content/own/CMMS/HomePage')));
+const ProductLifecycleList = Loader(
+  lazy(() => import('../content/own/CMMS/ProductLifecycle/ListPage'))
 );
-const ProductsSite = Loader(
-  lazy(() => import('../content/own/Products/Site'))
+const NewProduct = Loader(
+  lazy(() => import('../content/own/CMMS/ProductLifecycle/NewProductPage'))
+);
+const ProductDetails = Loader(
+  lazy(() => import('../content/own/CMMS/ProductLifecycle/ProductDetailsPage'))
 );
 
 const VendorsAndCustomers = Loader(
@@ -172,6 +176,31 @@ const SwitchAccount = Loader(
   lazy(() => import('../content/own/SwitchAccount'))
 );
 const appRoutes = [
+  {
+    path: '',
+    element: <Navigate to="home" replace />
+  },
+  {
+    path: 'home',
+    element: <CMMSHome />
+  },
+  {
+    path: 'product-lifecycle',
+    children: [
+      {
+        path: '',
+        element: <ProductLifecycleList />
+      },
+      {
+        path: 'new',
+        element: <NewProduct />
+      },
+      {
+        path: ':productId',
+        element: <ProductDetails />
+      }
+    ]
+  },
   {
     path: 'settings',
     element: <SettingsLayout />,
@@ -360,14 +389,6 @@ const appRoutes = [
     children: [
       { path: '', element: <WorkOrders /> },
       { path: ':workOrderId', element: <WorkOrders /> }
-    ]
-  },
-  {
-    path: 'products',
-    children: [
-      { path: '', element: <Navigate to="manufacture" replace /> },
-      { path: 'manufacture', element: <ProductsManufacture /> },
-      { path: 'site', element: <ProductsSite /> }
     ]
   },
   {

@@ -14,3 +14,140 @@ Successfully generated your runtime-env config!
 
   Thank you for using runtime-env-cra!
   
+Starting the development server...
+
+Compiled with warnings.
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Highlighter.tsx' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Highlighter.tsx'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Mention.tsx' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Mention.tsx'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\MentionsTextField.tsx' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\MentionsTextField.tsx'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Suggestion.tsx' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Suggestion.tsx'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\SuggestionsOverlay.tsx' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\SuggestionsOverlay.tsx'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\index.ts' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\index.ts'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\types.ts' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\types.ts'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\diacritics.ts' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\diacritics.ts'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\utils.ts' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\utils.ts'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\stylis-plugin-rtl\src\stylis-rtl.ts' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\stylis-plugin-rtl\src\stylis-rtl.ts'
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/Highlighter.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Highlighter.tsx' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Highlighter.tsx'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/Mention.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Mention.tsx' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Mention.tsx'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/MentionsTextField.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\MentionsTextField.tsx' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\MentionsTextField.tsx'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/Suggestion.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Suggestion.tsx' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Suggestion.tsx'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/SuggestionsOverlay.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\SuggestionsOverlay.tsx' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\SuggestionsOverlay.tsx'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/index.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\index.ts' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\index.ts'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/types.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\types.ts' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\types.ts'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/utils/diacritics.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\diacritics.ts' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\diacritics.ts'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/utils/utils.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\utils.ts' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\utils.ts'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/stylis-plugin-rtl/dist/stylis-rtl.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\stylis-plugin-rtl\src\stylis-rtl.ts' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\stylis-plugin-rtl\src\stylis-rtl.ts'[39m[22m
+
+webpack compiled with [1m[33m10 warnings[39m[22m
+No issues found.
+Compiling...
+Compiled with warnings.
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Highlighter.tsx' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Highlighter.tsx'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Mention.tsx' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Mention.tsx'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\MentionsTextField.tsx' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\MentionsTextField.tsx'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Suggestion.tsx' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Suggestion.tsx'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\SuggestionsOverlay.tsx' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\SuggestionsOverlay.tsx'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\index.ts' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\index.ts'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\types.ts' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\types.ts'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\diacritics.ts' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\diacritics.ts'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\utils.ts' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\utils.ts'
+
+Failed to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\stylis-plugin-rtl\src\stylis-rtl.ts' file: Error: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\stylis-plugin-rtl\src\stylis-rtl.ts'
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/Highlighter.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Highlighter.tsx' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Highlighter.tsx'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/Mention.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Mention.tsx' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Mention.tsx'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/MentionsTextField.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\MentionsTextField.tsx' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\MentionsTextField.tsx'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/Suggestion.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Suggestion.tsx' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\Suggestion.tsx'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/SuggestionsOverlay.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\SuggestionsOverlay.tsx' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\SuggestionsOverlay.tsx'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/index.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\index.ts' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\index.ts'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/types.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\types.ts' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\types.ts'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/utils/diacritics.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\diacritics.ts' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\diacritics.ts'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/@jackstenglein/mui-mentions/dist/esm/utils/utils.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\utils.ts' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\@jackstenglein\mui-mentions\src\utils\utils.ts'[39m[22m
+
+[1m[33mWARNING[39m[22m in [1m./node_modules/stylis-plugin-rtl/dist/stylis-rtl.js[39m[22m
+[1mModule Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+[1m[31mFailed[39m[22m[1m to parse source map from 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\stylis-plugin-rtl\src\stylis-rtl.ts' file: [1m[31mError[39m[22m[1m: ENOENT: no such file or directory, open 'C:\Users\BFLSYS-20\Downloads\cmms-main\cmms-main\frontend\node_modules\stylis-plugin-rtl\src\stylis-rtl.ts'[39m[22m
+
+webpack compiled with [1m[33m10 warnings[39m[22m
+No issues found.
