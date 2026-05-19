@@ -1,37 +1,40 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+
 import {
+  alpha,
   Box,
   Breadcrumbs,
   Button,
   Card,
   CardContent,
   Chip,
+  CircularProgress,
   Divider,
   Grid,
   Link,
   Paper,
   Stack,
   Tab,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
   Tabs,
   Typography,
-  alpha,
   useTheme
 } from '@mui/material';
+
 import ArrowBackTwoToneIcon from '@mui/icons-material/ArrowBackTwoTone';
 import OpenInNewTwoToneIcon from '@mui/icons-material/OpenInNewTwoTone';
+
 import { QRCodeSVG } from 'qrcode.react';
-import { Link as RouterLink, useNavigate, useParams } from 'react-router-dom';
+
+import {
+  Link as RouterLink,
+  useNavigate,
+  useParams
+} from 'react-router-dom';
+
+import axios from 'axios';
 
 import { TitleContext } from 'src/contexts/TitleContext';
-import { getProductStatusColor } from '../components';
-import { mockProducts } from '../mockData';
-import type { ProductDocument, ProductEvent, ProductMetric } from '../types';
 
 const tabs = [
   'Product Master Log',
@@ -42,363 +45,544 @@ const tabs = [
   'Audit Trail'
 ];
 
-function DetailField({ label, value }: { label: string; value: string }) {
+function DetailField({
+  label,
+  value
+}: {
+  label: string;
+  value: any;
+}) {
   return (
     <Box>
-      <Typography variant="caption" color="text.secondary">
+      <Typography
+        variant="caption"
+        sx={{
+          color: 'text.secondary',
+          fontWeight: 600,
+          textTransform: 'uppercase'
+        }}
+      >
         {label}
       </Typography>
-      <Typography variant="subtitle2">{value || '-'}</Typography>
+
+      <Typography
+        variant="subtitle2"
+        sx={{
+          mt: 0.5
+        }}
+      >
+        {value || '-'}
+      </Typography>
     </Box>
-  );
-}
-
-function EventList({ events }: { events: ProductEvent[] }) {
-  if (!events.length) {
-    return (
-      <Typography color="text.secondary">
-        No records are available for this tab.
-      </Typography>
-    );
-  }
-
-  return (
-    <Stack spacing={1.5}>
-      {events.map((event) => (
-        <Paper key={event.id} variant="outlined" sx={{ p: 2, borderRadius: 1 }}>
-          <Stack
-            direction={{ xs: 'column', md: 'row' }}
-            justifyContent="space-between"
-            spacing={1}
-          >
-            <Box>
-              <Typography variant="subtitle2">{event.label}</Typography>
-              <Typography color="text.secondary" variant="body2">
-                {event.description}
-              </Typography>
-            </Box>
-            <Box textAlign={{ xs: 'left', md: 'right' }}>
-              <Typography variant="caption" color="text.secondary">
-                {event.timestamp}
-              </Typography>
-              <Typography variant="body2">{event.owner}</Typography>
-            </Box>
-          </Stack>
-        </Paper>
-      ))}
-    </Stack>
-  );
-}
-
-function DocumentsTable({ documents }: { documents: ProductDocument[] }) {
-  if (!documents.length) {
-    return (
-      <Typography color="text.secondary">
-        No documents are attached to this product.
-      </Typography>
-    );
-  }
-
-  return (
-    <Table>
-      <TableHead>
-        <TableRow>
-          <TableCell>Document</TableCell>
-          <TableCell>Category</TableCell>
-          <TableCell>Owner</TableCell>
-          <TableCell>Updated</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {documents.map((document) => (
-          <TableRow key={document.id}>
-            <TableCell>{document.name}</TableCell>
-            <TableCell>{document.category}</TableCell>
-            <TableCell>{document.owner}</TableCell>
-            <TableCell>{document.updatedAt}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  );
-}
-
-function DigitalTwinMetrics({ metrics }: { metrics: ProductMetric[] }) {
-  return (
-    <Grid container spacing={2}>
-      {metrics.map((metric) => (
-        <Grid item xs={12} sm={6} md={3} key={metric.label}>
-          <Paper variant="outlined" sx={{ p: 2, borderRadius: 1 }}>
-            <Typography variant="caption" color="text.secondary">
-              {metric.label}
-            </Typography>
-            <Stack direction="row" alignItems="center" spacing={1} sx={{ mt: 1 }}>
-              <Typography variant="h3">{metric.value}</Typography>
-              <Chip size="small" color={metric.status} label={metric.status} />
-            </Stack>
-          </Paper>
-        </Grid>
-      ))}
-    </Grid>
   );
 }
 
 function ProductDetailsPage() {
   const theme = useTheme();
+
   const navigate = useNavigate();
+
   const { productId } = useParams();
+
   const { setTitle } = useContext(TitleContext);
+
+  const [product, setProduct] = useState<any>(null);
+
+  const [loading, setLoading] = useState(true);
+
   const [currentTab, setCurrentTab] = useState(0);
 
-  const product = useMemo(() => {
-    // TODO: Fetch product details from backend by ID.
-    return mockProducts.find((item) => item.id === productId);
+  // FETCH PRODUCT
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+
+        console.log('Fetching product ID:', productId);
+
+        const response = await axios.get(
+          `http://localhost:8080/api/products/${productId}`
+        );
+
+        console.log('API RESPONSE:', response.data);
+
+        setProduct(response.data.data);
+      } catch (error) {
+        console.error('FETCH ERROR:', error);
+        setProduct(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (productId) {
+      fetchProduct();
+    }
   }, [productId]);
 
   useEffect(() => {
-    setTitle(product ? product.name : 'Product Details');
+    setTitle(product?.productName || 'Product Details');
   }, [product, setTitle]);
 
+  // LOADING
+  if (loading) {
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="70vh"
+      >
+        <Stack spacing={2} alignItems="center">
+          <CircularProgress />
+          <Typography>Loading product...</Typography>
+        </Stack>
+      </Box>
+    );
+  }
+
+  // NOT FOUND
   if (!product) {
     return (
-      <>
-        <Helmet>
-          <title>Product Not Found</title>
-        </Helmet>
-        <Box p={{ xs: 2, md: 4 }}>
-          <Card sx={{ borderRadius: 1, boxShadow: 'none' }}>
-            <CardContent sx={{ py: 8, textAlign: 'center' }}>
-              <Typography variant="h2">Product not found</Typography>
-              <Typography color="text.secondary" sx={{ mt: 1, mb: 3 }}>
-                The requested product ID does not exist in the mock data.
-              </Typography>
-              <Button
-                variant="contained"
-                startIcon={<ArrowBackTwoToneIcon />}
-                onClick={() => navigate('/app/product-lifecycle')}
-              >
-                Back to Product List
-              </Button>
-            </CardContent>
-          </Card>
-        </Box>
-      </>
+      <Box p={4}>
+        <Typography variant="h4">
+          Product not found
+        </Typography>
+
+        <Button
+          sx={{ mt: 2 }}
+          variant="contained"
+          onClick={() =>
+            navigate('/app/product-lifecycle')
+          }
+        >
+          Back
+        </Button>
+      </Box>
     );
   }
 
   const metadata = [
-    ['Product UID', product.productUid],
-    ['Serial Number', product.serialNumber],
-    ['Version', product.productVersion],
-    ['BOM Version', product.bomVersion],
-    ['Batch ID', product.manufacturingBatchId],
-    ['QC Status', product.qcStatus],
-    ['Lifecycle Stage', product.lifecycleStage],
-    ['Customer', product.assignedCustomer],
-    ['Installation Site', product.installationSite],
-    ['Location', product.locationGps],
-    ['Contact', product.contactPerson],
-    ['Email', product.email]
+    ['PRODUCT UID', product.productUid],
+    ['SERIAL NUMBER', product.productSerialNumber],
+    ['VERSION', product.productVersion],
+    ['BOM VERSION', product.bomVersion],
+    ['BATCH ID', product.manufacturingBatchId],
+    ['QC STATUS', product.qcStatus],
+    ['LIFECYCLE STAGE', product.lifecycleStage],
+    ['CUSTOMER', product.assignedCustomer],
+    ['INSTALLATION SITE', product.installationSite],
+    ['LOCATION', product.locationGps],
+    ['CONTACT', product.contactPerson],
+    ['EMAIL', product.email]
   ];
 
   const technicalFields = [
-    ['Model Number', product.modelNumber],
-    ['Part Number', product.partNumber],
-    ['MAC Address', product.macAddress],
-    ['IMEI / Module ID', product.imeiModuleId],
-    ['Hardware Version', product.hardwareVersion],
-    ['Firmware Version', product.firmwareVersion],
-    ['RFID Tag ID', product.rfidTagId],
-    ['Manufacturing Date', product.manufacturingDate],
-    ['Assembly Date', product.assemblyDate]
+    ['MODEL NUMBER', product.modelNumber],
+    ['PART NUMBER', product.partNumber],
+    ['MAC ADDRESS', product.macAddress],
+    ['IMEI / MODULE ID', product.imeiModuleId],
+    ['HARDWARE VERSION', product.hardwareVersion],
+    ['FIRMWARE VERSION', product.firmwareVersion],
+    ['RFID TAG ID', product.rfidTagId],
+    ['MANUFACTURING DATE', product.manufacturingDate],
+    ['ASSEMBLY DATE', product.assemblyDate]
   ];
 
   return (
     <>
       <Helmet>
-        <title>{product.name}</title>
+        <title>
+          {product.productName}
+        </title>
       </Helmet>
-      <Box p={{ xs: 2, md: 4 }}>
-        <Stack spacing={2.5}>
-          <Stack spacing={1}>
-            <Breadcrumbs aria-label="breadcrumb">
-              <Link
-                component={RouterLink}
-                underline="hover"
-                color="inherit"
-                to="/app/home"
-              >
-                Home
-              </Link>
-              <Link
-                component={RouterLink}
-                underline="hover"
-                color="inherit"
-                to="/app/product-lifecycle"
-              >
-                Product Lifecycle Log
-              </Link>
-              <Typography color="text.primary">{product.id}</Typography>
-            </Breadcrumbs>
-            <Button
-              startIcon={<ArrowBackTwoToneIcon />}
-              sx={{ alignSelf: 'flex-start' }}
-              onClick={() => navigate('/app/product-lifecycle')}
-            >
-              Back to Product List
-            </Button>
-          </Stack>
 
-          <Card sx={{ borderRadius: 1, boxShadow: 'none' }}>
-            <CardContent>
-              <Grid container spacing={3}>
+      <Box
+        p={{ xs: 2, md: 4 }}
+        sx={{
+          backgroundColor: '#f5f7fb',
+          minHeight: '100vh'
+        }}
+      >
+        <Stack spacing={3}>
+
+          {/* BREADCRUMB */}
+          <Breadcrumbs separator="/">
+            <Link
+              component={RouterLink}
+              underline="hover"
+              color="inherit"
+              to="/app/home"
+            >
+              Home
+            </Link>
+
+            <Link
+              component={RouterLink}
+              underline="hover"
+              color="inherit"
+              to="/app/product-lifecycle"
+            >
+              Product Lifecycle Log
+            </Link>
+
+            <Typography color="text.primary">
+              {product.productUid}
+            </Typography>
+          </Breadcrumbs>
+
+          {/* BACK BUTTON */}
+          <Button
+            startIcon={<ArrowBackTwoToneIcon />}
+            onClick={() =>
+              navigate('/app/product-lifecycle')
+            }
+            sx={{
+              width: 'fit-content',
+              color: theme.palette.primary.main,
+              fontWeight: 600
+            }}
+          >
+            Back to Product List
+          </Button>
+
+          {/* TOP CARD */}
+          <Card
+            sx={{
+              borderRadius: 3,
+              boxShadow: '0 2px 10px rgba(0,0,0,0.06)'
+            }}
+          >
+            <CardContent sx={{ p: 4 }}>
+
+              <Grid container spacing={4}>
+
+                {/* LEFT SIDE */}
                 <Grid item xs={12} md={3}>
+
                   <Stack spacing={2}>
+
+                    {/* IMAGE */}
+                    
                     <Paper
-                      variant="outlined"
+                      elevation={0}
                       sx={{
+                        borderRadius: 3,
+                        border: '1px solid #e5e7eb',
                         p: 2,
-                        borderRadius: 1,
-                        bgcolor: alpha(theme.palette.primary.main, 0.03)
+                        height: 220,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        overflow: 'hidden'
                       }}
                     >
                       <Box
                         component="img"
-                        src={product.imageUrl}
-                        alt={product.name}
+                        src={
+                          product.imageUrl
+                            ? `http://localhost:8080/${product.imageUrl}`
+                            : 'https://via.placeholder.com/250'
+                        }
+                        alt={product.productName}
                         sx={{
                           width: '100%',
-                          height: 180,
+                          height: '100%',
                           objectFit: 'contain'
                         }}
                       />
                     </Paper>
+
+                    {/* QR CODE */}
                     <Paper
-                      variant="outlined"
+                      elevation={0}
                       sx={{
-                        p: 2,
-                        borderRadius: 1,
+                        borderRadius: 3,
+                        border: '1px solid #e5e7eb',
+                        p: 3,
                         display: 'flex',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        alignItems: 'center'
                       }}
                     >
-                      <QRCodeSVG value={product.qrValue} size={132} />
+                      <QRCodeSVG
+                        value={
+                          product.productUid ||
+                          'NO_QR'
+                        }
+                        size={140}
+                      />
                     </Paper>
+
                   </Stack>
+
                 </Grid>
 
+                {/* RIGHT SIDE */}
                 <Grid item xs={12} md={9}>
+
                   <Stack
-                    direction={{ xs: 'column', md: 'row' }}
+                    direction={{
+                      xs: 'column',
+                      md: 'row'
+                    }}
                     justifyContent="space-between"
-                    spacing={2}
-                    sx={{ mb: 2 }}
+                    spacing={3}
                   >
+
+                    {/* PRODUCT INFO */}
                     <Box>
-                      <Stack direction="row" spacing={1} alignItems="center">
-                        <Typography variant="h2">{product.name}</Typography>
+
+                      <Stack
+                        direction="row"
+                        spacing={1.5}
+                        alignItems="center"
+                      >
+
+                        <Typography
+                          variant="h3"
+                          sx={{
+                            fontWeight: 700
+                          }}
+                        >
+                          {product.productName}
+                        </Typography>
+
                         <Chip
-                          size="small"
-                          label={product.status}
-                          color={getProductStatusColor(product.status)}
+                          label={
+                            product.productStatus
+                          }
+                          sx={{
+                            backgroundColor:
+                              '#4caf50',
+                            color: '#fff',
+                            fontWeight: 600
+                          }}
                         />
+
                       </Stack>
-                      <Typography color="text.secondary" sx={{ mt: 0.5 }}>
-                        {product.description}
+
+                      <Typography
+                        color="text.secondary"
+                        sx={{
+                          mt: 1,
+                          maxWidth: 700
+                        }}
+                      >
+                        {product.remarks ||
+                          'No description available'}
                       </Typography>
+
                     </Box>
-                    <Button
-                      variant="outlined"
-                      endIcon={<OpenInNewTwoToneIcon />}
-                      href={product.digitalTwinLink}
-                      target="_blank"
-                    >
-                      Digital Twin
-                    </Button>
+
+                    {/* DIGITAL TWIN BUTTON */}
+                    {product.digitalTwinLink && (
+                      <Button
+                        variant="outlined"
+                        target="_blank"
+                        href={
+                          product.digitalTwinLink
+                        }
+                        endIcon={
+                          <OpenInNewTwoToneIcon />
+                        }
+                        sx={{
+                          borderRadius: 2,
+                          px: 3,
+                          height: 'fit-content'
+                        }}
+                      >
+                        Digital Twin
+                      </Button>
+                    )}
+
                   </Stack>
 
-                  <Grid container spacing={2}>
-                    {metadata.map(([label, value]) => (
-                      <Grid item xs={12} sm={6} md={4} key={label}>
-                        <DetailField label={label} value={value} />
-                      </Grid>
-                    ))}
+                  {/* METADATA */}
+                  <Grid
+                    container
+                    spacing={4}
+                    sx={{ mt: 2 }}
+                  >
+                    {metadata.map(
+                      ([label, value]) => (
+                        <Grid
+                          item
+                          xs={12}
+                          sm={6}
+                          md={4}
+                          key={label}
+                        >
+                          <DetailField
+                            label={label}
+                            value={value}
+                          />
+                        </Grid>
+                      )
+                    )}
                   </Grid>
+
                 </Grid>
+
               </Grid>
+
             </CardContent>
           </Card>
 
-          <Card sx={{ borderRadius: 1, boxShadow: 'none' }}>
+          {/* TABS SECTION */}
+          <Card
+            sx={{
+              borderRadius: 3,
+              boxShadow: '0 2px 10px rgba(0,0,0,0.06)'
+            }}
+          >
+
             <Tabs
               value={currentTab}
-              onChange={(_event, value) => setCurrentTab(value)}
+              onChange={(_, value) =>
+                setCurrentTab(value)
+              }
               variant="scrollable"
               scrollButtons="auto"
+              sx={{
+                px: 2,
+                pt: 1
+              }}
             >
               {tabs.map((tab) => (
-                <Tab key={tab} label={tab} />
+                <Tab
+                  key={tab}
+                  label={tab}
+                  sx={{
+                    textTransform: 'none',
+                    fontWeight: 600
+                  }}
+                />
               ))}
             </Tabs>
+
             <Divider />
-            <CardContent>
+
+            <CardContent sx={{ p: 4 }}>
+
+              {/* PRODUCT MASTER LOG */}
               {currentTab === 0 && (
-                <Stack spacing={2}>
-                  <Grid container spacing={2}>
-                    {technicalFields.map(([label, value]) => (
-                      <Grid item xs={12} sm={6} md={4} key={label}>
-                        <DetailField label={label} value={value} />
+                <Grid container spacing={4}>
+                  {technicalFields.map(
+                    ([label, value]) => (
+                      <Grid
+                        item
+                        xs={12}
+                        sm={6}
+                        md={4}
+                        key={label}
+                      >
+                        <DetailField
+                          label={label}
+                          value={value}
+                        />
                       </Grid>
-                    ))}
-                  </Grid>
-                  <Divider />
-                  <EventList events={product.masterLog} />
-                </Stack>
+                    )
+                  )}
+                </Grid>
               )}
+
+              {/* OTHER TABS */}
               {currentTab === 1 && (
-                <EventList events={product.logisticsTrail} />
+                <Typography>
+                  Logistics Trail data coming
+                  from backend...
+                </Typography>
               )}
+
               {currentTab === 2 && (
-                <EventList events={product.maintenanceHistory} />
+                <Typography>
+                  Maintenance History data
+                  coming from backend...
+                </Typography>
               )}
+
               {currentTab === 3 && (
-                <Stack spacing={2}>
-                  <DocumentsTable documents={product.documents} />
-                  <Divider />
-                  <Grid container spacing={2}>
-                    {product.attachments.map((attachment) => (
-                      <Grid item xs={12} sm={6} md={4} key={attachment.name}>
-                        <Paper variant="outlined" sx={{ p: 2, borderRadius: 1 }}>
-                          <Typography variant="subtitle2">
-                            {attachment.name}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {attachment.type} - {attachment.size}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">
-                            Updated {attachment.updatedAt}
-                          </Typography>
-                        </Paper>
-                      </Grid>
-                    ))}
-                  </Grid>
-                </Stack>
-              )}
+
+  <Grid container spacing={2}>
+
+    {product.attachments?.length > 0 ? (
+
+      product.attachments.map(
+        (file: any) => (
+
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            key={file.id}
+          >
+
+            <Paper
+              sx={{
+                p: 2,
+                borderRadius: 2,
+                border:
+                  '1px solid #e5e7eb'
+              }}
+            >
+
+              <Typography
+                variant="subtitle2"
+              >
+                {file.fileName}
+              </Typography>
+
+              <Button
+                sx={{ mt: 2 }}
+                variant="outlined"
+                size="small"
+                href={`http://localhost:8080/${file.fileUrl}`}
+                target="_blank"
+              >
+                View Document
+              </Button>
+
+            </Paper>
+
+          </Grid>
+        )
+      )
+
+    ) : (
+
+      <Typography>
+        No documents available
+      </Typography>
+
+    )}
+
+  </Grid>
+)}
+
               {currentTab === 4 && (
-                <Stack spacing={2}>
-                  <DigitalTwinMetrics metrics={product.digitalTwinMetrics} />
-                  <Typography color="text.secondary">
-                    {product.digitalTwinLink}
-                  </Typography>
-                </Stack>
+                <Typography>
+                  Digital Twin integration
+                  coming soon...
+                </Typography>
               )}
-              {currentTab === 5 && <EventList events={product.auditTrail} />}
+
+              {currentTab === 5 && (
+                <Typography>
+                  Audit Trail coming from
+                  backend...
+                </Typography>
+              )}
+
             </CardContent>
+
           </Card>
+
         </Stack>
       </Box>
     </>
   );
 }
 
-export default ProductDetailsPage;
+export default ProductDetailsPage;  

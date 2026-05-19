@@ -1,16 +1,43 @@
 import axios from 'axios';
-import AxiosMockAdapter from 'axios-mock-adapter';
 
-const axiosInt = axios.create();
+/**
+ * IMPORTANT:
+ * Do NOT use mock adapter in real API calls
+ * It intercepts requests and prevents backend hit
+ */
 
-axiosInt.interceptors.response.use(
-  (response) => response,
-  (error) =>
-    Promise.reject(
-      (error.response && error.response.data) || 'There is an error!'
-    )
+const axiosInt = axios.create({
+  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:8080',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+
+/**
+ * Request Interceptor
+ */
+axiosInt.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    return config;
+  },
+  (error) => Promise.reject(error)
 );
 
-export const mock = new AxiosMockAdapter(axiosInt, { delayResponse: 0 });
+/**
+ * Response Interceptor
+ */
+axiosInt.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.error('AXIOS ERROR:', error?.response || error);
+    return Promise.reject(error);
+  }
+);
 
 export default axiosInt;
