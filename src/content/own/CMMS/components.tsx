@@ -10,29 +10,53 @@ import {
   Typography,
   useTheme
 } from '@mui/material';
-import ArrowForwardTwoToneIcon from '@mui/icons-material/ArrowForwardTwoTone';
 
-import type { ModuleCardData, ProductStatus, SummaryCardData } from './types';
+import ArrowForwardTwoToneIcon
+from '@mui/icons-material/ArrowForwardTwoTone';
+
+import type {
+  ModuleCardData,
+  ProductStatus,
+  SummaryCardData
+} from './types';
+
+
+// =====================================
+// SUMMARY CARD
+// =====================================
 
 interface SummaryCardProps {
   item: SummaryCardData;
 }
 
-export function SummaryCard({ item }: SummaryCardProps) {
+export function SummaryCard({
+  item
+}: SummaryCardProps) {
+
   const theme = useTheme();
+
   const Icon = item.icon;
 
   return (
+
     <Card
       sx={{
         height: '100%',
         borderRadius: 1,
-        border: `1px solid ${theme.palette.divider}`,
+        border:
+          `1px solid ${theme.palette.divider}`,
         boxShadow: 'none'
       }}
     >
+
       <CardContent>
-        <Stack direction="row" spacing={2} alignItems="center">
+
+        <Stack
+          direction="row"
+          spacing={2}
+          alignItems="center"
+        >
+
           <Box
             sx={{
               width: 42,
@@ -46,24 +70,48 @@ export function SummaryCard({ item }: SummaryCardProps) {
               flexShrink: 0
             }}
           >
+
             <Icon />
+
           </Box>
+
           <Box minWidth={0}>
-            <Typography variant="caption" color="text.secondary">
+
+            <Typography
+              variant="caption"
+              color="text.secondary"
+            >
               {item.label}
             </Typography>
-            <Typography variant="h3" sx={{ mt: 0.5 }}>
+
+            <Typography
+              variant="h3"
+              sx={{ mt: 0.5 }}
+            >
               {item.value}
             </Typography>
-            <Typography variant="caption" color="success.main">
+
+            <Typography
+              variant="caption"
+              color="success.main"
+            >
               {item.trend}
             </Typography>
+
           </Box>
+
         </Stack>
+
       </CardContent>
+
     </Card>
   );
 }
+
+
+// =====================================
+// MODULE CARD
+// =====================================
 
 interface ModuleCardProps {
   module: ModuleCardData;
@@ -71,20 +119,30 @@ interface ModuleCardProps {
   onOpen: () => void;
 }
 
-export function ModuleCard({ module, disabled = false, onOpen }: ModuleCardProps) {
+export function ModuleCard({
+  module,
+  disabled = false,
+  onOpen
+}: ModuleCardProps) {
+
   const theme = useTheme();
+
   const Icon = module.icon;
 
   return (
+
     <Card
       sx={{
         height: '100%',
         borderRadius: 1,
-        border: `1px solid ${theme.palette.divider}`,
+        border:
+          `1px solid ${theme.palette.divider}`,
         boxShadow: 'none',
-        opacity: disabled ? 0.82 : 1
+        opacity:
+          disabled ? 0.82 : 1
       }}
     >
+
       <CardActionArea
         disabled={disabled}
         onClick={onOpen}
@@ -93,6 +151,7 @@ export function ModuleCard({ module, disabled = false, onOpen }: ModuleCardProps
           alignItems: 'stretch'
         }}
       >
+
         <CardContent
           sx={{
             minHeight: 210,
@@ -101,12 +160,14 @@ export function ModuleCard({ module, disabled = false, onOpen }: ModuleCardProps
             flexDirection: 'column'
           }}
         >
+
           <Stack
             direction="row"
             justifyContent="space-between"
             alignItems="flex-start"
             spacing={1}
           >
+
             <Box
               sx={{
                 width: 48,
@@ -115,26 +176,52 @@ export function ModuleCard({ module, disabled = false, onOpen }: ModuleCardProps
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                bgcolor: alpha(module.color, 0.1),
+                bgcolor:
+                  alpha(module.color, 0.1),
                 color: module.color
               }}
             >
+
               <Icon fontSize="medium" />
+
             </Box>
-            {module.status === 'coming-soon' && (
-              <Chip size="small" label="Later" variant="outlined" />
+
+            {module.status ===
+              'coming-soon' && (
+
+              <Chip
+                size="small"
+                label="Later"
+                variant="outlined"
+              />
+
             )}
+
           </Stack>
 
-          <Typography variant="h4" sx={{ mt: 2, mb: 1 }}>
+          <Typography
+            variant="h4"
+            sx={{
+              mt: 2,
+              mb: 1
+            }}
+          >
             {module.title}
           </Typography>
-          <Typography color="text.secondary" variant="body2" sx={{ flex: 1 }}>
+
+          <Typography
+            color="text.secondary"
+            variant="body2"
+            sx={{ flex: 1 }}
+          >
             {module.description}
           </Typography>
+
           <Button
             disabled={disabled}
-            endIcon={<ArrowForwardTwoToneIcon />}
+            endIcon={
+              <ArrowForwardTwoToneIcon />
+            }
             sx={{
               mt: 2,
               alignSelf: 'flex-start',
@@ -143,15 +230,32 @@ export function ModuleCard({ module, disabled = false, onOpen }: ModuleCardProps
           >
             View Module
           </Button>
+
         </CardContent>
+
       </CardActionArea>
+
     </Card>
   );
 }
 
-export function getProductStatusColor(status: ProductStatus) {
-  if (status === 'In Service') return 'success';
-  if (status === 'Manufacturing') return 'info';
-  if (status === 'Maintenance') return 'warning';
+
+// =====================================
+// STATUS COLOR
+// =====================================
+
+export function getProductStatusColor(
+  status: ProductStatus
+) {
+
+  if (status === 'In Service')
+    return 'success';
+
+  if (status === 'Manufacturing')
+    return 'info';
+
+  if (status === 'Maintenance')
+    return 'warning';
+
   return 'default';
 }
